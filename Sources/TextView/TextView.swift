@@ -21,14 +21,15 @@ public struct TextView: UIViewRepresentable {
 		}
 		
 		public func textViewDidChange(_ textView: UITextView) {
-			parent.text = textView.text
+//			parent.text = textView.text
 		}
 		
-		public func textViewDidBeginEditing(_: UITextView) {
+		public func textViewDidBeginEditing(_ textView: UITextView) {
 			setIsEditing(to: true)
 		}
 		
-		public func textViewDidEndEditing(_: UITextView) {
+		public func textViewDidEndEditing(_ textView: UITextView) {
+            parent.text = textView.text
 			setIsEditing(to: false)
 		}
 	}
@@ -102,6 +103,9 @@ public struct TextView: UIViewRepresentable {
 		textView.isSelectable = isSelectable
 		textView.isScrollEnabled = isScrollingEnabled
 		textView.isUserInteractionEnabled = isUserInteractionEnabled
+        
+        textView.textContainerInset = UIEdgeInsets.zero
+        textView.textContainer.lineFragmentPadding = 0
 		return textView
 	}
 	
