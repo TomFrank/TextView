@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 @available(iOS 13.0, *)
 public struct TextView: UIViewRepresentable {
